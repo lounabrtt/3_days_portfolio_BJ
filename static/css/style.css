@@ -1,0 +1,493 @@
+/* police */
+
+h1 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 3em;
+    font-weight: 700;
+    color: rgb(89, 131, 146);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+h2 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.2em;
+    font-weight: 700;
+    color: rgb(89, 131, 153);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+h3 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 5.2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 2px;
+    margin-top: 200px;
+}
+
+h4 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 60px;
+    margin-top: 0px;
+}
+
+h5 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 2.3em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+h6  {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+span  {
+  
+   
+    color: rgb(18, 69, 89);
+   
+}
+p {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #333;
+    
+    margin-top: 2px;
+}
+
+
+
+
+
+/* Barre latérale fixe */
+.navbar {
+    background-color: rgb(18, 69, 89); /* Couleur de fond de la barre latérale */
+    overflow: hidden;
+    position: fixed; /* Barre fixe */
+    top: 0; /* Début en haut de la page */
+    left: 0; /* Positionnée à gauche */
+    height: 100%; /* Prendre toute la hauteur de la page */
+    width: 250px; /* Largeur de la barre latérale */
+    z-index: 1000; /* Toujours au-dessus du contenu */
+    padding-top: 20px; /* Un peu d'espace en haut */
+}
+
+/* Styles des liens dans la barre latérale */
+.navbar a {
+    display: block;
+    color: white;
+    text-align: left; /* Alignement du texte à gauche */
+    padding: 14px 19px;
+    text-decoration: none;
+}
+
+/* Styles au survol des liens */
+.navbar a:hover {
+    background-color: #dddddd;
+    color: rgb(88, 117, 153);
+}
+
+body {
+    margin-left: 250px; /* Décalage du contenu pour laisser la place à la barre latérale */
+}
+
+/* Style des sections */
+section {
+    padding: 60px;
+    height: 650px; /* Exemple pour donner de la hauteur aux sections */
+}
+
+
+#contact {
+    background-color: #dddddd;
+}
+#index {
+    background-color: #dddddd;
+}
+#competences {
+    background-color: #dddddd;
+}
+#profil {
+    background-color: #dddddd;
+}
+#projets {
+    background-color: #dddddd;
+}
+
+#experiences {
+    background-color: #dddddd;
+}
+
+
+img {
+    border-radius: 16px; /* Coins arrondis */
+    max-width: 100%; /* Pour que l'image s'adapte à son conteneur */
+    height: auto; /* Pour maintenir le ratio d'aspect */
+    margin: 20px;
+}
+
+
+
+
+/* Style général du formulaire */
+form {
+    max-width: 600px;
+    margin: 50px auto; /* Centrer le formulaire */
+    padding: 15px;
+    padding-right: 45px;
+    padding-left: 20PX;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px #ccc;
+}
+
+/* Style des labels */
+form label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Style des champs de saisie */
+form input[type="text"],
+form input[type="email"],
+form input[type="firstname"],
+form input[type="name"],
+form input[type="phone"],
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+/* Style du textarea */
+form textarea {
+    height: 150px;
+    resize: vertical; /* Permettre à l'utilisateur de redimensionner verticalement */
+}
+
+/* Focus sur les champs (quand l'utilisateur clique) */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: rgb(51, 51, 51);
+    outline: none; /* Retire l'effet par défaut sur le focus */
+}
+
+/* Style du bouton d'envoi */
+form button {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    margin-right: center;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style au survol du bouton */
+form button:hover {
+    background-color: rgb(18, 69, 89);
+}
+
+/* Adaptation pour les petits écrans */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    form button {
+        font-size: 14px;
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 80px; /* Espacement entre les cases */
+    max-width: 2000px; /* Largeur maximale du conteneur */
+    max-height: 2000px; /* Hauteur maximale du conteneur */
+}
+
+.box {
+    width: 200px; /* Largeur de la case */
+    height: 200px; /* Hauteur de la case */
+    background-color: rgb(18, 69, 89); /* Couleur de fond des cases */
+    color: white; /* Couleur du texte */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    text-align: center; /* Centrer le texte */
+    transition: background-color 0.3s; /* Transition pour l'effet au survol */
+    cursor: pointer; /* Pointeur de la souris au survol */
+}
+
+.box:hover {
+    background-color: rgb(18, 69, 89); /* Couleur de fond au survol */
+}
+
+.box2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px; /* Largeur de la case */
+    height: 70px; /* Hauteur de la case */
+    z-index: 1000; /* affiche au dessus de tout */
+    margin-top: -50px; /* décalage vers le haut */
+    background-color: rgb(18, 69, 89); /* Couleur de fond des cases */
+    color: rgb(255, 255, 255); /* Couleur du texte */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 10px; /* Espacement interne */
+    text-align: center; /* Centrer le texte */
+    transition: background-color 0.3s; /* Transition pour l'effet au survol */
+    cursor: pointer; /* Pointeur de la souris au survol */
+}
+
+.box2:hover {
+    background-color: rgb(18, 69, 89); /* Couleur de fond au survol */
+}
+
+.box2 img {
+    margin: center;
+    margin-bottom: -9px;
+    width: 50px;
+    height: 50px;
+}
+
+span {
+    font-size: 16px;
+    margin-bottom: 10px;
+    z-index: 700;
+    margin-top: -60px;
+    font-family: 'Apple Chancery, cursive'
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 4 colonnes */
+    gap: 20px; /* Espacement entre les cases */
+    max-width: 2000px; /* Largeur maximale du conteneur */
+    max-height: 2000px; /* Hauteur maximale du conteneur */
+    z-index: 1000
+
+}
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+
+/* Styles de base, déjà présents */
+
+h1 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 3em;
+    font-weight: 700;
+    color: rgb(89, 131, 146);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+h2 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.2em;
+    font-weight: 700;
+    color: rgb(89, 131, 153);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+h3 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 5.2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 200px;
+}
+
+h4 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 60px;
+    margin-top: 0px;
+}
+
+h5 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 2.3em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+h6 {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+span {
+    color: rgb(18, 69, 89);
+}
+
+p {
+    font-family: 'Apple Chancery, cursive';
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #333;
+    margin-top: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.1em;
+    }
+    h3 {
+        font-size: 4em;
+        margin-top: 150px;
+    }
+    h4 {
+        font-size: 1.8em;
+    }
+    h5 {
+        font-size: 2em;
+    }
+    h6 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    h3 {
+        font-size: 3.5em;
+        margin-top: 120px;
+    }
+    h4 {
+        font-size: 1.6em;
+    }
+    h5 {
+        font-size: 1.8em;
+    }
+    h6 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 0.9em;
+    }
+    h3 {
+        font-size: 3em;
+        margin-top: 100px;
+    }
+    h4 {
+        font-size: 1.4em;
+    }
+    h5 {
+        font-size: 1.6em;
+    }
+    h6 {
+        font-size: 1.1em;
+    }
+
+    /* Réduire la largeur de la barre latérale sur les écrans plus petits */
+    .navbar {
+        width: 200px;
+    }
+    body {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 0.8em;
+    }
+    h3 {
+        font-size: 2.5em;
+        margin-top: 80px;
+    }
+    h4 {
+        font-size: 1.2em;
+    }
+    h5 {
+        font-size: 1.4em;
+    }
+    h6 {
+        font-size: 1em;
+    }
+
+    .navbar {
+        width: 180px;
+    }
+    body {
+        margin-left: 180px;
+    }
+
+    /* Réduire la taille des boîtes pour les petits écrans */
+    .box, .box2, .box3 {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Formulaire : ajuster le padding et les dimensions */
+    form {
+        padding: 10px;
+        max-width: 90%;
+    }
+
+    /* Réduire l'espacement des conteneurs */
+    .container, .container2, .container3 {
+        gap: 20px;
+    }
+}
