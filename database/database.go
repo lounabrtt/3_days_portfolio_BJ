@@ -10,22 +10,22 @@ func InitTables(db *sql.DB) error {
         return fmt.Errorf("error creating contact table: %v", err)
     }
     if err := createTableExperience(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+        return fmt.Errorf("error creating experience table: %v", err)
     }
     if err := createTableCompetence(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+        return fmt.Errorf("error creating competence table: %v", err)
     }
     if err := createTableProjet(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+        return fmt.Errorf("error creating projet table: %v", err)
     }
     if err := createTableLogin(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+        return fmt.Errorf("error creating login table: %v", err)
     }
-    if err := createTableLanguage(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+    if err := createTableLangage(db); err != nil {
+        return fmt.Errorf("error creating langage table: %v", err)
     }
     if err := createTableLogiciel(db); err != nil {
-        return fmt.Errorf("error creating post table: %v", err)
+        return fmt.Errorf("error creating logiciel table: %v", err)
     }
     return nil
 }
@@ -47,22 +47,33 @@ func createTableContact(db *sql.DB) error {
     }
 
     func createTableLogin(db *sql.DB) error {
+        // Création de la table login
         createTableSQL := `
-        CREATE TABLE IF NOT EXISTS contact (
+        CREATE TABLE IF NOT EXISTS login (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             password TEXT NOT NULL
         );`
 
-    _, err := db.Exec(createTableSQL)
+        _, err := db.Exec(createTableSQL)
+        if err != nil {
+            return err
+        }
+        // Insertion de données après la création de la table login pour les tests
+        insertSQL := `
+        INSERT INTO login (id, password) VALUES (1234, 'ABC');`
+
+        _, err = db.Exec(insertSQL)
         return err
     }
 
-// createTableLanguage permet de créer la table language dans la base de données
-func createTableLanguage(db *sql.DB) error {
+// createTableLangage permet de créer la table langage dans la base de données
+func createTableLangage(db *sql.DB) error {
     createTableSQL :=`
-    CREATE TABLE IF NOT EXISTS language (
+    CREATE TABLE IF NOT EXISTS langage (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        language TEXT NOT NULL
+        langage TEXT NOT NULL,
+        url  TEXT NOT NULL
+
     );`
 
     _, err := db.Exec(createTableSQL)
@@ -74,7 +85,8 @@ func createTableLogiciel(db *sql.DB) error {
     createTableSQL :=`
     CREATE TABLE IF NOT EXISTS logiciel (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        logiciel TEXT NOT NULL
+        logiciel TEXT NOT NULL,
+        url  TEXT NOT NULL
     );`
 
     _, err := db.Exec(createTableSQL)

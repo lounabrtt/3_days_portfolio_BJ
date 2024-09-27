@@ -12,7 +12,7 @@ import (
 
 var db *sql.DB
 
-// Structure pour le profil
+// Structure pour le contact
 type Contact struct {
 	Name        string
 	FirstName   string
@@ -22,16 +22,19 @@ type Contact struct {
 }
 
 type Login struct {
-	Id    string
+	id    string
 	password string
 }
 
-type Language struct {
-	Language string
+type Langage struct {
+	Langage string
+	url       string
+
 }
 
 type Logiciel struct {
 	Logiciel string
+	url1       string
 }
 
 type Projet struct {
@@ -75,27 +78,30 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
-func addlanguageHandler(w http.ResponseWriter, r *http.Request) {
-	language := r.FormValue("language")
+func addlangageHandler(w http.ResponseWriter, r *http.Request) {
+    langage := r.FormValue("langage")
+    url := r.FormValue("url") // Assurez-vous d'avoir une entrée "url" dans le formulaire HTML
 
-	_, err := db.Exec("INSERT INTO language (language) VALUES (?)", language)
-	if err != nil {
-		log.Printf("Erreur lors de l'insertion des données : %v", err)
-	}
+    _, err := db.Exec("INSERT INTO langage (langage, url) VALUES (?, ?)", langage, url)
+    if err != nil {
+        log.Printf("Erreur lors de l'insertion des données : %v", err)
+    }
 
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+    http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
 func addlogicielHandler(w http.ResponseWriter, r *http.Request) {
-	logiciel := r.FormValue("logiciel")
+    logiciel := r.FormValue("logiciel")
+    url1 := r.FormValue("url1") // Assurez-vous d'avoir une entrée "url" dans le formulaire HTML
 
-	_, err := db.Exec("INSERT INTO logiciel (logiciel) VALUES (?)", logiciel)
-	if err != nil {
-		log.Printf("Erreur lors de l'insertion des données : %v", err)
-	}
+    _, err := db.Exec("INSERT INTO logiciel (logiciel, url1) VALUES (?, ?)", logiciel, url1)
+    if err != nil {
+        log.Printf("Erreur lors de l'insertion des données : %v", err)
+    }
 
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+    http.Redirect(w, r, "/", http.StatusSeeOther)
 }
+
 
 func addprojetHandler(w http.ResponseWriter, r *http.Request) {
 	projet := r.FormValue("projet")
@@ -106,6 +112,33 @@ func addprojetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+// func adminHandler(w http.ResponseWriter, r *http.Request) {
+// 	tmpl, err := template.ParseFiles("./templates/admin.html")
+// 	if err != nil {
+// 		http.Error(w, "Erreur lors du chargement de la page", http.StatusInternalServerError)
+// 		return
+// 	}
+// 	tmpl.Execute(w, nil)
+// }
+
+func checkTables(db *sql.DB) {
+    rows, err := db.Query("SELECT name FROM sqlite_master WHERE type='table';")
+    if err != nil {
+        log.Fatalf("Erreur lors de la vérification des tables : %v", err)
+    }
+    defer rows.Close()
+
+    log.Println("Tables présentes dans la base de données :")
+    for rows.Next() {
+        var tableName string
+        err := rows.Scan(&tableName)
+        if err != nil {
+            log.Fatalf("Erreur lors de la lecture des noms de tables : %v", err)
+        }
+        log.Println(tableName)
+    }
 }
 
 
@@ -120,7 +153,7 @@ func main() {
 
 	// Création de la table si elle n'existe pas
 	database.InitTables(db)
-
+	checkTables(db)
 	// Routage des fichiers statiques (CSS, JS, images)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
@@ -130,16 +163,17 @@ func main() {
 	http.HandleFunc("/login", loginHandler)
 
 
-	// http.HandleFunc("/addlanguage", addlanguageHandler)
-	// http.HandleFunc("/addlogiciel", addlogicielHandler)
-	// http.HandleFunc("/addprojet", addprojetHandler)
+	http.HandleFunc("/addlangage", addlangageHandler)
+	http.HandleFunc("/addlogiciel", addlogicielHandler)
+	http.HandleFunc("/addprojet", addprojetHandler)
 
 	// http.HandleFunc("./templates/index.html", contactHandler)
 	http.HandleFunc("./templates/login.html", loginHandler)
+	// http.HandleFunc("./templates/admin.html", adminHandler)
 
 	// Lancement du serveur sur le port 8080
 	log.Println("Serveur démarré sur http://localhost:8080")
-	err = http.ListenAndServe(":8000", nil)
+	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatalf("Erreur lors du démarrage du serveur : %v", err)
 	}
